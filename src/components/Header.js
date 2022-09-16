@@ -1,37 +1,64 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { FaBook } from 'react-icons/fa';
-const onHamburger = () => {
-  const nav = document.querySelector('nav ul');
-  nav.classList.toggle('slide');
-};
+import { PopupMenu } from 'react-simple-widgets';
+import Button from '../utils/Button';
+
 function Header() {
-  return (
-    <nav>
-      <div className='logo'>
-        <p className='title-logo'>
-          <FaBook />
-          <Link to='/'>NotesApp</Link>
-        </p>
-      </div>
+	const onHamburger = () => {
+		const nav = document.querySelector('nav ul');
+		nav.classList.toggle('slide');
+	};
+	return (
+		<nav>
+			<div className='logo'>
+				<p className='title-logo'>
+					<FaBook />
+					<Button type='link' href='/'>
+						NotesApp
+					</Button>
+				</p>
+			</div>
 
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/new'>Add Notes</Link>
-        </li>
-      </ul>
+			<ul>
+				<li>
+					<Button type='link' href='/'>
+						Home
+					</Button>
+				</li>
+				<li>
+					<Button type='link' href='/new'>
+						Add Notes
+					</Button>
+				</li>
+				<li>
+					<PopupMenu>
+						<button className='btn-profile'>Profile</button>
+						<div className='profile-menu'>
+							<div id='circle-avatar' className='circle-avatar'>
+								<span>K</span>
+							</div>
 
-      <div className='menu-toggle' onClick={() => onHamburger()}>
-        <input type='checkbox' />
-        <span />
-        <span />
-        <span />
-      </div>
-    </nav>
-  );
+							<h5 className='profile-menu__name'>John Doe</h5>
+							<p className='profile-menu__email'>jd@gmail.com</p>
+
+							<hr style={{ margin: '0 -24px 24px' }} />
+
+							<div className='d-grid'>
+								<button className='btn-logout'>Logout</button>
+							</div>
+						</div>
+					</PopupMenu>
+				</li>
+			</ul>
+
+			<div className='menu-toggle' onClick={() => onHamburger()}>
+				<input type='checkbox' />
+				<span />
+				<span />
+				<span />
+			</div>
+		</nav>
+	);
 }
 
 export default Header;

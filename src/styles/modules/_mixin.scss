@@ -65,6 +65,45 @@
   }
 }
 
+@mixin btn-profile {
+  padding: 0.5em;
+  border: 0;
+  outline-color: initial;
+  border-radius: 3px;
+  background-color: #00cc8f;
+  color: v.$primaryTextColor;
+  font-weight: 500;
+  font-size: 1em;
+
+  cursor: pointer;
+  transition: 0.3s ease-out;
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
+@mixin btn-logout {
+  display: flex;
+  align-items: center;
+  margin: 1em auto;
+  padding: 0.6em;
+  border: 0;
+  outline-color: initial;
+  border-radius: 3px;
+  background-color: #d9534f;
+  color: v.$primaryTextColor;
+  font-weight: 500;
+  font-size: 1em;
+
+  cursor: pointer;
+  transition: 0.3s ease-out;
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
 @mixin btn-regist {
   display: block;
   padding: .8rem .7rem;

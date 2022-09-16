@@ -73,6 +73,7 @@ header {
       list-style: none;
       display: flex;
       justify-content: space-between;
+      align-items: center;
 
       li {
         margin: 0 .5em;
@@ -87,6 +88,11 @@ header {
             color: v.$secondaryTextColor;
           }
         }
+
+        .btn-profile {
+          @include m.btn-profile();
+        }
+
       }
     }
 
@@ -116,6 +122,45 @@ header {
         background-color: #fff;
         border-radius: 3px;
         transition: all 0.5s;
+      }
+
+      .profile-menu {
+        .circle-avatar {
+          display: grid;
+          width: 100px;
+          height: 100px;
+          text-align: center;
+          margin: 0 auto;
+          margin-bottom: 1rem;
+          border-radius: 50%;
+          background-color: #ffbd30;
+          place-items: center;
+
+          span {
+            font-size: 48px;
+            font-weight: bold;
+          }
+        }
+
+        .profile-menu__name {
+          text-align: center;
+          margin-bottom: 0;
+        }
+
+        .profile-menu__name {
+          text-align: center;
+          margin-bottom: .5rem;
+        }
+
+        .d-grid {
+          display: grid;
+        }
+
+        .btn-logout {
+          // @include m.btn-profile() !important;
+          padding: 1em !important;
+        }
+
       }
     }
   }
@@ -447,6 +492,65 @@ header {
 }
 
 // end of register page
+/* Spinner Sphere */
+.spinner {
+  width: 200px;
+  height: 200px;
+  clear: both;
+  margin: 180px auto;
+}
+
+.spinner-loader {
+  border-radius: 50%;
+  border-left: 0px #fff solid;
+  border-right: 0px #fff solid;
+  -webkit-animation: spSphere 1s infinite linear;
+  animation: spSphere 1s infinite linear;
+}
+
+@-webkit-keyframes spSphere {
+  0% {
+    border-left: 0px #fff solid;
+    border-right: 0px #fff solid;
+  }
+
+  33% {
+    border-left: 32px #fff solid;
+    border-right: 0px #fff solid;
+  }
+
+  34% {
+    border-left: 0px #fff solid;
+    border-right: 32px #fff solid;
+  }
+
+  66% {
+    border-left: 0px #fff solid;
+    border-right: 0px #fff solid;
+  }
+}
+
+@keyframes spSphere {
+  0% {
+    border-left: 0px #fff solid;
+    border-right: 0px #fff solid;
+  }
+
+  33% {
+    border-left: 32px #fff solid;
+    border-right: 0px #fff solid;
+  }
+
+  34% {
+    border-left: 0px #fff solid;
+    border-right: 32px #fff solid;
+  }
+
+  66% {
+    border-left: 0px #fff solid;
+    border-right: 0px #fff solid;
+  }
+}
 
 // end of konten styles
 

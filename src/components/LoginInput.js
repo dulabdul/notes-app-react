@@ -1,38 +1,26 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../utils/Button';
 import InputText from '../utils/Forms';
-export default function RegisterInput(props) {
-	const [name, setName] = useState('');
+import Button from '../utils/Button';
+
+export default function LoginInput(props) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
-	const onNameChange = (e) => {
-		setName(e.target.value);
+	const onPasswordChange = (e) => {
+		setPassword(e.target.value);
 	};
 	const onEmailChange = (e) => {
 		setEmail(e.target.value);
 	};
-	const onPasswordChange = (e) => {
-		setPassword(e.target.value);
-	};
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		props.register({
-			name: name,
+		props.login({
 			email: email,
 			password: password,
 		});
 	};
 	return (
 		<form onSubmit={onSubmitHandler} className='register-input'>
-			<InputText
-				type='text'
-				placeholder='Name'
-				value={name}
-				onChange={onNameChange}
-				name='name'
-			/>
 			<InputText
 				type='email'
 				placeholder='Email'
@@ -48,11 +36,12 @@ export default function RegisterInput(props) {
 				name='password'
 			/>
 			<Button type='button' isRegister>
-				Register
+				Login
 			</Button>
 		</form>
 	);
 }
-RegisterInput.propTypes = {
-	register: PropTypes.func.isRequired,
+
+LoginInput.propTypes = {
+	login: PropTypes.func.isRequired,
 };

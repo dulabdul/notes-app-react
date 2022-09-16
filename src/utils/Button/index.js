@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export default function Button(props) {
 	const className = [props.className];
@@ -8,6 +8,7 @@ export default function Button(props) {
 	if (props.isArchived) className.push('notes-item__btnarchive');
 	if (props.isBack) className.push('notfound-container__btnback');
 	if (props.isRegister) className.push('register-page__btnregist');
+	if (props.isProfile) className.push('profile-menu__btnprofile');
 	const onClick = () => {
 		if (props.onClick) props.onClick();
 	};
@@ -50,12 +51,13 @@ export default function Button(props) {
 	);
 }
 Button.propTypes = {
-	type: propTypes.oneOf(['button', 'link']),
-	onClick: propTypes.func,
-	target: propTypes.string,
-	href: propTypes.string,
-	isDelete: propTypes.bool,
-	isArchived: propTypes.bool,
-	isBack: propTypes.bool,
-	isRegister: propTypes.bool,
+	type: PropTypes.oneOf(['button', 'link']),
+	onClick: PropTypes.func,
+	target: PropTypes.string,
+	href: PropTypes.string,
+	isDelete: PropTypes.bool,
+	isArchived: PropTypes.bool,
+	isBack: PropTypes.bool,
+	isRegister: PropTypes.bool,
+	isProfile: PropTypes.bool,
 };
