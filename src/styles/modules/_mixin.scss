@@ -1,62 +1,86 @@
 @use 'variables'as v;
 
-@mixin btn-delete{
-    display: flex;
-    align-items: center;
-    padding: 0.6em;
-    border: 0;
-    outline-color: initial;
-    border-radius: 3px;
-    background-color: transparent;
-    color: v.$primaryTextColor;
-    font-weight: 500;
-    font-size: 1em;
-    margin-right: 0.5em;
-    margin-top: 1em;
-    cursor: pointer;
-    transition: 0.3s ease-out;
-    border: 1px solid #d9534f;
-    &:hover {
-      background-color: #d9534f;
-    }
-}
-@mixin btn-archived{
-    display: flex;
-    align-items: center;
-    padding: 0.6em;
-    border: 0;
-    outline-color: initial;
-    border-radius: 3px;
-    background-color: transparent;
-    color: v.$primaryTextColor;
-    font-weight: 500;
-    font-size: 1em;
-    margin-right: 0.5em;
-    margin-top: 1em;
-    cursor: pointer;
-    transition: 0.3s ease-out;
-    border: 1px solid #00cc8f;
-    &:hover {
-      background-color: #00cc8f;
-    }
-}
-@mixin btn-back{
-    display: flex;
-    align-items: center;
-    margin: 1em auto;
-    padding: 0.6em;
-    border: 0;
-    outline-color: initial;
-    border-radius: 3px;
-    background-color: #f0ad4e;
-    color: v.$primaryTextColor;
-    font-weight: 500;
-    font-size: 1em;
+@mixin btn-delete {
+  display: flex;
+  align-items: center;
+  padding: 0.6em;
+  border: 0;
+  outline-color: initial;
+  border-radius: 3px;
+  background-color: transparent;
+  color: v.$primaryTextColor;
+  font-weight: 500;
+  font-size: 1em;
+  margin-right: 0.5em;
+  margin-top: 1em;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  border: 1px solid #d9534f;
 
-    cursor: pointer;
-    transition: 0.3s ease-out;
+  &:hover {
+    background-color: #d9534f;
+  }
+}
 
-    &:hover {
-     opacity: .6;
-    }
+@mixin btn-archived {
+  display: flex;
+  align-items: center;
+  padding: 0.6em;
+  border: 0;
+  outline-color: initial;
+  border-radius: 3px;
+  background-color: transparent;
+  color: v.$primaryTextColor;
+  font-weight: 500;
+  font-size: 1em;
+  margin-right: 0.5em;
+  margin-top: 1em;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  border: 1px solid #00cc8f;
+
+  &:hover {
+    background-color: #00cc8f;
+  }
+}
+
+@mixin btn-back {
+  display: flex;
+  align-items: center;
+  margin: 1em auto;
+  padding: 0.6em;
+  border: 0;
+  outline-color: initial;
+  border-radius: 3px;
+  background-color: #f0ad4e;
+  color: v.$primaryTextColor;
+  font-weight: 500;
+  font-size: 1em;
+
+  cursor: pointer;
+  transition: 0.3s ease-out;
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
+@mixin btn-regist {
+  display: block;
+  padding: .8rem .7rem;
+  width: 100%;
+  border: 0;
+  outline-color: initial;
+  border-radius: 20px;
+  background-color: #00cc8f;
+  color: v.$primaryTextColor;
+  font-weight: 500;
+  font-size: 1em;
+
+  cursor: pointer;
+  transition: 0.3s ease-out;
+
+  &:hover {
+    opacity: .6;
+  }
 }

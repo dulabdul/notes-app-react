@@ -369,6 +369,85 @@ header {
   }
 }
 
+// register page styles
+.container {
+  .register-page {
+    position: relative;
+    width: 50%;
+    border-radius: 8px;
+    height: 100%;
+    overflow: hidden;
+    background: v.$secondaryColor;
+    align-items: center;
+    padding: 40px;
+    margin: 0 auto;
+
+    .register-page__heading {
+      margin: 0 auto;
+      width: 200px;
+      font-size: 60px;
+      font-weight: bold;
+      text-align: center;
+      color: lightgray;
+      -webkit-transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -ms-transition: 0.2s ease all;
+      -o-transition: 0.2s ease all;
+      transition: 0.2s ease all;
+
+      &:hover {
+        color: #00cc8f
+      }
+    }
+
+    .register-page__btnregist {
+      @include m.btn-regist();
+    }
+
+    form {
+      margin: 0 30px;
+
+      input {
+        margin: 10px 0;
+        padding: .8rem .7rem;
+        width: 100%;
+        outline: none;
+        border: 1px solid #bbb;
+        border-radius: 20px;
+        display: inline-block;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -ms-transition: 0.2s ease all;
+        -o-transition: 0.2s ease all;
+        transition: 0.2s ease all;
+
+        &[type="text"]:focus,
+        &[type="password"]:focus,
+        &[type="email"]:focus {
+          border-color: #00cc8f;
+        }
+      }
+
+
+    }
+
+    a {
+      margin-top: 1.2rem;
+      color: #fff;
+      display: block;
+
+      &:hover {
+        color: blue;
+      }
+    }
+  }
+}
+
+// end of register page
+
 // end of konten styles
 
 
