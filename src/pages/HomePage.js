@@ -34,14 +34,6 @@ export default function HomePage() {
 				});
 				deleteNote(id);
 				setNotes(getAllNotes());
-				// const notes = this.state.notes.filter((note) => note.id !== id);
-				// const searchNotes = this.state.searchNotes.filter(
-				// 	(note) => note.id !== id
-				// );
-				// this.setState({
-				// 	notes,
-				// 	searchNotes,
-				// });
 			} else {
 				Swal.fire('Your notes file is cancel deleted!');
 			}

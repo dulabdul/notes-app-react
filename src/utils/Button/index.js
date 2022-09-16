@@ -7,7 +7,7 @@ export default function Button(props) {
 	if (props.isDelete) className.push('notes-item__btndelete');
 	if (props.isArchived) className.push('notes-item__btnarchive');
 	if (props.isBack) className.push('notfound-container__btnback');
-
+	if (props.isRegister) className.push('register-page__btnregist');
 	const onClick = () => {
 		if (props.onClick) props.onClick();
 	};
@@ -57,4 +57,5 @@ Button.propTypes = {
 	isDelete: propTypes.bool,
 	isArchived: propTypes.bool,
 	isBack: propTypes.bool,
+	isRegister: propTypes.bool,
 };
