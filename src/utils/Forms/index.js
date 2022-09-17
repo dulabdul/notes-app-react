@@ -1,7 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 export default function InputText(props) {
-	const { value, type, placeholder, name, inputClassName, onChange } = props;
+	const { value, type, placeholder, name, inputClassName, onChange, ref } =
+		props;
 	// const [hasError, setHasError] = useState(null);
 	// let pattern = '';
 	// if (type === 'email') pattern = /^[^\s@]+@[^\s@]+\.[^s@]+$/;
@@ -24,6 +25,7 @@ export default function InputText(props) {
 				name={name}
 				placeholder={placeholder}
 				value={value}
+				ref={ref}
 				onChange={onChange}
 				className={['input-control', inputClassName].join(' ')}
 			/>

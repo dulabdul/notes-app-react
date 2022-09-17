@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 const BASE_URL = 'https://notes-api.dicoding.dev/v1';
 
 function getAccessToken() {
@@ -30,11 +31,30 @@ async function login({ email, password }) {
 	const responseJson = await response.json();
 
 	if (responseJson.status !== 'success') {
-		alert(responseJson.message);
+		toast.error(responseJson.message, {
+			position: 'top-right',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
 		return { error: true, data: null };
 	}
-
-	return { error: false, data: responseJson.data };
+	toast.success(responseJson.message, {
+		position: 'top-right',
+		autoClose: 3000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+	});
+	return {
+		error: false,
+		data: responseJson.data,
+	};
 }
 
 async function register({ name, email, password }) {
@@ -49,10 +69,26 @@ async function register({ name, email, password }) {
 	const responseJson = await response.json();
 
 	if (responseJson.status !== 'success') {
-		alert(responseJson.message);
+		toast.error(responseJson.message, {
+			position: 'top-right',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
 		return { error: true };
 	}
-
+	toast.success(responseJson.message, {
+		position: 'top-right',
+		autoClose: 3000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+	});
 	return { error: false };
 }
 
@@ -63,8 +99,11 @@ async function getUserLogged() {
 	if (responseJson.status !== 'success') {
 		return { error: true, data: null };
 	}
-
-	return { error: false, data: responseJson.data };
+	return {
+		error: false,
+		data: responseJson.data,
+		message: responseJson.message,
+	};
 }
 
 async function addNote({ title, body }) {
