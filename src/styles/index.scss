@@ -1,7 +1,21 @@
 // modules sass
 @use 'modules/font';
-@use 'modules/variables'as v;
 @use 'modules/mixin'as m;
+:root{
+  --primaryColor: #1a1b24;
+  --secondaryColor: #282b38;
+  --tersierColor: #3e4253;
+  --primaryTextColor: #fff;
+  --secondaryTextColor: #b5bdd6;
+}
+[data-theme='light']{
+  --primaryColor: #fff;
+  --secondaryColor: #b5bdd6;
+  --tersierColor: #3e4253;
+  --primaryTextColor: #1a1b24;
+  --secondaryTextColor: #282b38;
+  }
+
 
 // end of modules
 // Global Styles
@@ -9,6 +23,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background 0.3s ease-in;
 }
 
 html {
@@ -19,30 +34,29 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-family: "Noto Sans", sans-serif;
-  background-color: v.$primaryColor;
+  background-color: var(--primaryColor);
 }
-
 // End Of Global Styles
 
 // Header styles
 header {
   display: inline;
 
-  .heading_jumbroton {
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    top: 10%;
+  // .heading_jumbroton {
+  //   position: absolute;
+  //   text-align: center;
+  //   width: 100%;
+  //   top: 10%;
 
-    h1 {
-      color: v.$primaryColor;
-      font-size: 3em;
-    }
-  }
+  //   h1 {
+  //     color: var(--primaryColor);
+  //     font-size: 3em;
+  //   }
+  // }
 
   nav {
     display: flex;
-    background-color: v.$secondaryColor;
+    background-color: var(--secondaryColor);
     justify-content: space-between;
     padding: 0 2em;
     height: 60px;
@@ -50,21 +64,51 @@ header {
     position: sticky;
     top: 0;
 
-    .logo {
+    .brand-container {
+      display: flex;
+      align-items: center;
       .title-logo {
+        display: flex;
+        align-items: center;
         a {
           font-size: 1em;
-          color: v.$primaryTextColor;
+          color: var(--primaryTextColor);
           text-decoration: none;
 
           &:hover {
-            color: v.$secondaryTextColor;
+            color: var(--secondaryTextColor);
           }
         }
 
         svg {
-          color: v.$primaryTextColor;
+          color: var(--primaryTextColor);
           margin-right: 0.3em;
+        }
+      }
+      .toggle-theme{
+        margin-top: 8px;
+        button{
+          background: transparent;
+          color: #fff;
+          font-size: 28px;
+          border: 0;
+          cursor: pointer;
+        }
+      }
+      .toggle-lang{
+        button{
+          color: var(--primaryTextColor);
+          font-size: 1em;
+          background-color: #00cc8f;
+          padding: 0.4em;
+          border-radius: 6px;
+          text-align: center;
+          cursor: pointer;
+          width: 50px;
+          border: none;
+          &:hover{
+            opacity: .7;
+          }
         }
       }
     }
@@ -80,12 +124,12 @@ header {
 
         a {
           text-decoration: none;
-          color: v.$primaryTextColor;
+          color: var(--primaryTextColor);
           font-weight: bold;
           font-size: 0.9em;
 
           &:hover {
-            color: v.$secondaryTextColor;
+            color: var(--secondaryTextColor);
           }
         }
 
@@ -123,49 +167,56 @@ header {
         border-radius: 3px;
         transition: all 0.5s;
       }
-
-      .profile-menu {
-        .circle-avatar {
-          display: grid;
-          width: 100px;
-          height: 100px;
-          text-align: center;
-          margin: 0 auto;
-          margin-bottom: 1rem;
-          border-radius: 50%;
-          background-color: #ffbd30;
-          place-items: center;
-
-          span {
-            font-size: 48px;
-            font-weight: bold;
-          }
-        }
-
-        .profile-menu__name {
-          text-align: center;
-          margin-bottom: 0;
-        }
-
-        .profile-menu__name {
-          text-align: center;
-          margin-bottom: .5rem;
-        }
-
-        .d-grid {
-          display: grid;
-        }
-
-        .btn-logout {
-          // @include m.btn-profile() !important;
-          padding: 1em !important;
-        }
-
-      }
     }
   }
 }
+.kZqnfX{
+  background-color: var(--secondaryColor);
+  border-radius: 6px;
+  padding: 1em;
+  top: 60px !important;
+}
+.profile-menu{
+  width: 250px;
+  .circle-avatar {
+    display: grid;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background-color: #ffbd30;
+    place-items: center;
 
+    span {
+      font-size: 48px;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+  }
+  .profile-menu__name {
+    font-size: 1.2em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .profile-menu__email {
+    color: var(--secondaryTextColor);
+    text-align: center;
+    margin-bottom: .5rem;
+  }
+
+  .d-grid {
+    display: grid;
+  }
+
+  .btn-logout {
+    @include m.btn-logout();
+
+  }
+}
 .menu-toggle span:nth-child(2) {
   transform-origin: 0 0;
 }
@@ -194,14 +245,14 @@ header {
 // search styles
 .notes-search {
   margin: 2em auto;
-  border: 2px solid v.$tersierColor;
+  border: 2px solid var(--tersierColor);
   border-radius: 5px;
   padding: 7px 5px 7px 7px;
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: v.$tersierColor;
+  background-color: var(--tersierColor);
 
   input {
     border: none;
@@ -231,17 +282,17 @@ header {
     max-width: 100%;
 
     h2 {
-      color: v.$primaryTextColor;
+      color: var(--primaryTextColor);
       font-size: 3em;
     }
 
     .detail-container__date {
-      color: v.$secondaryTextColor;
+      color: var(--secondaryTextColor);
     }
 
     .detail-container__description {
       margin-top: 2em;
-      color: v.$primaryTextColor;
+      color: var(--primaryTextColor);
     }
 
     .notfound-container__btnback {
@@ -262,7 +313,7 @@ header {
       display: flex;
       margin: 0.5em;
       overflow: hidden;
-      background-color: v.$secondaryColor;
+      background-color: var(--secondaryColor);
       flex-direction: column;
       padding: 1em;
       box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.2);
@@ -271,7 +322,7 @@ header {
 
       .notes-item__head {
         a {
-          color: v.$primaryTextColor;
+          color: var(--primaryTextColor);
           font-size: 1.5em;
           font-weight: 600;
           text-decoration: none;
@@ -283,7 +334,7 @@ header {
       }
 
       .notes-item__date {
-        color: v.$secondaryTextColor;
+        color: var(--secondaryTextColor);
         font-size: 0.8em;
         font-weight: 300;
         margin-top: 0.3em;
@@ -292,15 +343,15 @@ header {
       .notes-item__content {
         font-size: 1em;
         font-weight: 400;
-        color: v.$primaryTextColor;
+        color: var(--primaryTextColor);
         margin-top: 0.9em;
 
         a {
-          color: v.$primaryTextColor;
+          color: var(--primaryTextColor);
           text-decoration: none;
 
           &:hover {
-            color: v.$secondaryTextColor;
+            color: var(--secondaryTextColor);
             text-decoration: underline;
           }
         }
@@ -339,12 +390,12 @@ header {
 
     h2 {
       font-size: 2em;
-      color: v.$primaryTextColor;
+      color: var(--primaryTextColor);
       letter-spacing: 3px;
     }
 
     .add-note__title-limit {
-      color: v.$secondaryTextColor;
+      color: var(--secondaryTextColor);
     }
 
     .add-note__title,
@@ -358,7 +409,7 @@ header {
       outline: none;
       padding: 0.6em;
       margin: 0.6em 0;
-      color: v.$primaryTextColor;
+      color: var(--primaryTextColor);
       border-radius: 3px;
     }
 
@@ -375,7 +426,7 @@ header {
       border: 1px solid #00cc8f;
       outline: none;
       padding: 0.6em;
-      color: v.$primaryTextColor;
+      color: var(--primaryTextColor);
       border-radius: 3px;
       cursor: pointer;
     }
@@ -393,7 +444,7 @@ header {
       }
 
       p {
-        color: v.$primaryTextColor;
+        color: var(--primaryTextColor);
       }
     }
 
@@ -403,7 +454,7 @@ header {
   }
 
   .notes-list_heading {
-    color: v.$primaryTextColor;
+    color: var(--primaryTextColor);
     font-size: 2em;
     margin-top: 1.5em;
   }
@@ -422,7 +473,7 @@ header {
     border-radius: 8px;
     height: 100%;
     overflow: hidden;
-    background: v.$secondaryColor;
+    background: var(--secondaryColor);
     align-items: center;
     padding: 40px;
     margin: 0 auto;
@@ -585,7 +636,7 @@ header {
         right: 0;
         top: 0;
         flex-direction: column;
-        background-color: v.$tersierColor;
+        background-color: var(--tersierColor);
         height: 100vh;
         width: 50%;
         align-items: center;

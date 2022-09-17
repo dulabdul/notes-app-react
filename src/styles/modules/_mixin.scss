@@ -1,4 +1,17 @@
-@use 'variables'as v;
+:root{
+  --primaryColor: #1a1b24;
+  --secondaryColor: #282b38;
+  --tersierColor: #3e4253;
+  --primaryTextColor: #fff;
+  --secondaryTextColor: #b5bdd6;
+}
+[data-theme='light']{
+  --primaryColor: #fff;
+  --secondaryColor: #b5bdd6;
+  --tersierColor: #3e4253;
+  --primaryTextColor: #1a1b24;
+  --secondaryTextColor: #282b38;
+  }
 
 @mixin btn-delete {
   display: flex;
@@ -8,7 +21,7 @@
   outline-color: initial;
   border-radius: 3px;
   background-color: transparent;
-  color: v.$primaryTextColor;
+  color: var(--primaryTextColor);
   font-weight: 500;
   font-size: 1em;
   margin-right: 0.5em;
@@ -30,7 +43,7 @@
   outline-color: initial;
   border-radius: 3px;
   background-color: transparent;
-  color: v.$primaryTextColor;
+  color: var(--primaryTextColor);
   font-weight: 500;
   font-size: 1em;
   margin-right: 0.5em;
@@ -53,7 +66,7 @@
   outline-color: initial;
   border-radius: 3px;
   background-color: #f0ad4e;
-  color: v.$primaryTextColor;
+  color: var(--primaryTextColor);
   font-weight: 500;
   font-size: 1em;
 
@@ -71,7 +84,7 @@
   outline-color: initial;
   border-radius: 3px;
   background-color: #00cc8f;
-  color: v.$primaryTextColor;
+  color: var(--primaryTextColor);
   font-weight: 500;
   font-size: 1em;
 
@@ -84,15 +97,16 @@
 }
 
 @mixin btn-logout {
-  display: flex;
-  align-items: center;
+  display: block;
   margin: 1em auto;
   padding: 0.6em;
+  width: 100%;
+  text-align: center;
   border: 0;
   outline-color: initial;
   border-radius: 3px;
   background-color: #d9534f;
-  color: v.$primaryTextColor;
+  color: var(--primaryTextColor);
   font-weight: 500;
   font-size: 1em;
 
@@ -112,7 +126,7 @@
   outline-color: initial;
   border-radius: 20px;
   background-color: #00cc8f;
-  color: v.$primaryTextColor;
+  color: var(--primaryTextColor);
   font-weight: 500;
   font-size: 1em;
 
