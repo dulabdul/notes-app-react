@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../utils/Button';
 import InputText from '../utils/Forms';
@@ -8,6 +8,53 @@ export default function RegisterInput(props) {
   const [name, onNameChange] = useInput('');
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
+  const [confirmPassword, onConfirmPasswordChange] = useInput('');
+  const [error, setError] = useState({
+    password: password,
+    confirmPassword: confirmPassword,
+  });
+  const onPasswordValidate = (e) => {
+    onPasswordChange(e);
+    validateInput(e);
+  };
+  const onConfirmPasswordValidate = (e) => {
+    onConfirmPasswordChange(e);
+    validateInput(e);
+  };
+  const validateInput = (e) => {
+    let { name, value } = e.target;
+    setError((prev) => {
+      const stateObj = { ...prev, [name]: '' };
+
+      switch (name) {
+        case 'password':
+          if (!value) {
+            stateObj[name] = 'Please enter Password.';
+          } else if (confirmPassword && value !== confirmPassword) {
+            stateObj['confirmPassword'] =
+              'Password and Confirm Password does not match.';
+          } else {
+            stateObj['confirmPassword'] = confirmPassword
+              ? ''
+              : error.confirmPassword;
+          }
+          break;
+
+        case 'confirmPassword':
+          if (!value) {
+            stateObj[name] = 'Please enter Confirm Password.';
+          } else if (password && value !== password) {
+            stateObj[name] = 'Password and Confirm Password does not match.';
+          }
+          break;
+
+        default:
+          break;
+      }
+
+      return stateObj;
+    });
+  };
   const onSubmitHandler = (e) => {
     e.preventDefault();
     props.register({
@@ -23,6 +70,7 @@ export default function RegisterInput(props) {
         placeholder='Name'
         value={name}
         onChange={onNameChange}
+        onBlur={validateInput}
         name='name'
       />
       <InputText
@@ -30,16 +78,29 @@ export default function RegisterInput(props) {
         placeholder='Email'
         value={email}
         onChange={onEmailChange}
+        onBlur={validateInput}
         name='email'
       />
       <InputText
         type='password'
         placeholder='Password'
         value={password}
-        onChange={onPasswordChange}
+        onChange={onPasswordValidate}
+        onBlur={validateInput}
         name='password'
       />
-      <Button type='button' isRegister>
+      <InputText
+        type='password'
+        placeholder='Confirm Password'
+        value={confirmPassword}
+        onChange={onConfirmPasswordValidate}
+        onBlur={validateInput}
+        name='confirmPassword'
+      />
+      {error.confirmPassword && (
+        <span className='err'>{error.confirmPassword}</span>
+      )}
+      <Button type='button' disabled={!error.confirmPassword} isRegister>
         Register
       </Button>
     </form>

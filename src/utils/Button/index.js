@@ -44,6 +44,7 @@ export default function Button(props) {
       className={className.join(' ')}
       style={props.style}
       onClick={onClick}
+      disabled={props.disabled === false ? 'disabled' : undefined}
     >
       {props.children}
     </button>

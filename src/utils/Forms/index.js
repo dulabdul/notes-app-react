@@ -1,8 +1,16 @@
 import React from 'react';
 import propTypes from 'prop-types';
 export default function InputText(props) {
-  const { value, type, placeholder, name, inputClassName, onChange, ref } =
-    props;
+  const {
+    value,
+    type,
+    placeholder,
+    name,
+    inputClassName,
+    onChange,
+    onBlur,
+    ref,
+  } = props;
   return (
     <div className='input-group'>
       <input
@@ -11,6 +19,7 @@ export default function InputText(props) {
         placeholder={placeholder}
         value={value}
         ref={ref}
+        onBlur={onBlur}
         onChange={onChange}
         className={['input-control', inputClassName].join(' ')}
       />

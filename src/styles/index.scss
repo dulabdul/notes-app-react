@@ -28,7 +28,11 @@
   box-sizing: border-box;
   transition: background-color 0.2s ease-in;
 }
-
+.err {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #e64646;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -459,6 +463,11 @@ header {
 
 // register page styles
 .container {
+  .register-input{
+    button:disabled{
+      background-color: #6c757d;
+    }
+  }
   .register-page {
 
     position: relative;
