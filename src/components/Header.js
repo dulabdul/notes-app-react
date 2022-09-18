@@ -14,22 +14,42 @@ function Header({ logout, email, name }) {
   return (
     <nav>
       <div className='brand-container'>
-        <ul>
-          <li className='title-logo'>
-            <FaBook />
-            <Button type='link' href='/'>
-              NotesApp
-            </Button>
-          </li>
-          <li className='toggle-theme'>
-            <ToggleTheme />
-          </li>
-          <li className='toggle-lang'>
-            <button onClick={toggleLangHandler}>
-              {localeLang === 'id' ? 'ID' : 'EN'}
-            </button>
-          </li>
-        </ul>
+        <div className='title-logo'>
+          <FaBook />
+          <Button type='link' href='/'>
+            NotesApp
+          </Button>
+        </div>
+        <div className='toggle-theme'>
+          <ToggleTheme />
+        </div>
+        <div className='toggle-lang'>
+          <button onClick={toggleLangHandler}>
+            {localeLang === 'id' ? 'ID' : 'EN'}
+          </button>
+        </div>
+        <PopupMenu>
+          <button className='btn-profile'>
+            {' '}
+            {localeLang === 'id' ? 'Profil' : 'Profile'}
+          </button>
+          <div className='profile-menu'>
+            <div id='circle-avatar' className='circle-avatar'>
+              <span>{name.charAt(0)}</span>
+            </div>
+
+            <h5 className='profile-menu__name'>{name}</h5>
+            <p className='profile-menu__email'>{email}</p>
+
+            <hr style={{ margin: '0 -14px 7px' }} />
+
+            <div className='d-grid'>
+              <button onClick={logout} className='btn-logout'>
+                {localeLang === 'id' ? 'Keluar' : 'Logout'}
+              </button>
+            </div>
+          </div>
+        </PopupMenu>
       </div>
 
       <ul>
@@ -47,30 +67,6 @@ function Header({ logout, email, name }) {
           <Button type='link' href='/new'>
             {localeLang === 'id' ? 'Tambah Catatan' : 'Add Notes'}
           </Button>
-        </li>
-        <li>
-          <PopupMenu>
-            <button className='btn-profile'>
-              {' '}
-              {localeLang === 'id' ? 'Profil' : 'Profile'}
-            </button>
-            <div className='profile-menu'>
-              <div id='circle-avatar' className='circle-avatar'>
-                <span>{name.charAt(0)}</span>
-              </div>
-
-              <h5 className='profile-menu__name'>{name}</h5>
-              <p className='profile-menu__email'>{email}</p>
-
-              <hr style={{ margin: '0 -14px 7px' }} />
-
-              <div className='d-grid'>
-                <button onClick={logout} className='btn-logout'>
-                  {localeLang === 'id' ? 'Keluar' : 'Logout'}
-                </button>
-              </div>
-            </div>
-          </PopupMenu>
         </li>
       </ul>
 

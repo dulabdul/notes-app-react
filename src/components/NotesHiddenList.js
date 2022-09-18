@@ -6,7 +6,6 @@ import LocaleContext from '../contexts/LocaleContext';
 function NotesHiddenList({ notes, onDelete, onMoveArchive }) {
   const { localeLang } = useContext(LocaleContext);
   const listNotesActive = notes.filter((note) => note.archived === true);
-  console.log(listNotesActive);
   return (
     <>
       <h2 className='notes-list_heading'>

@@ -6,22 +6,22 @@ import { FaArrowLeft } from 'react-icons/fa';
 import LocaleContext from '../contexts/LocaleContext';
 import showFormattedDate from '../utils/formatDate';
 export default function DetailNotes({ note }) {
-	const { localeLang } = useContext(LocaleContext);
-	return (
-		<>
-			<div className='detail-container'>
-				<h2 className='detail-container__heading'>{note.title}</h2>
-				<p className='detail-container__date'>
-					{showFormattedDate(note.createdAt)}
-				</p>
-				<p className='detail-container__description'>{parser(note.body)}</p>
-				<Button type='button' onClick={() => window.history.back()} isBack>
-					<FaArrowLeft /> {localeLang === 'id' ? 'Kembali' : 'Back'}
-				</Button>
-			</div>
-		</>
-	);
+  const { localeLang } = useContext(LocaleContext);
+  return (
+    <>
+      <div className='detail-container'>
+        <h2 className='detail-container__heading'>{note.title}</h2>
+        <p className='detail-container__date'>
+          {showFormattedDate(note.createdAt)}
+        </p>
+        <p className='detail-container__description'>{parser(note.body)}</p>
+        <Button type='button' onClick={() => window.history.back()} isBack>
+          <FaArrowLeft /> {localeLang === 'id' ? 'Kembali' : 'Back'}
+        </Button>
+      </div>
+    </>
+  );
 }
 DetailNotes.propTypes = {
-	note: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  note: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 };

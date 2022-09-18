@@ -6,14 +6,17 @@
   --secondaryColor: #282b38;
   --tersierColor: #3e4253;
   --primaryTextColor: #fff;
-  --secondaryTextColor: #b5bdd6;
+  --secondaryTextColor: #b0bec5;
+  --interactiveText : #0071bc;
+  --borderColor : #3e4253;
 }
 [data-theme='light']{
-  --primaryColor: #fff;
-  --secondaryColor: #b5bdd6;
-  --tersierColor: #3e4253;
+  --primaryColor: #DDE4E7;
+  --secondaryColor: #ECEFF1;
+  --tersierColor: #DDE4E7;
   --primaryTextColor: #1a1b24;
   --secondaryTextColor: #282b38;
+  --borderColor : #8791A6;
   }
 
 
@@ -23,7 +26,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: background 0.3s ease-in;
+  transition: background-color 0.2s ease-in;
 }
 
 html {
@@ -36,23 +39,16 @@ body {
   font-family: "Noto Sans", sans-serif;
   background-color: var(--primaryColor);
 }
+#root{
+  display:flex; 
+  flex-direction:column;
+  height: 100vh;
+}
 // End Of Global Styles
 
 // Header styles
 header {
   display: inline;
-
-  // .heading_jumbroton {
-  //   position: absolute;
-  //   text-align: center;
-  //   width: 100%;
-  //   top: 10%;
-
-  //   h1 {
-  //     color: var(--primaryColor);
-  //     font-size: 3em;
-  //   }
-  // }
 
   nav {
     display: flex;
@@ -86,10 +82,10 @@ header {
         }
       }
       .toggle-theme{
-        margin-top: 8px;
+        margin: 8px 12px 0 12px;
         button{
           background: transparent;
-          color: #fff;
+          color: var(--primaryTextColor);
           font-size: 28px;
           border: 0;
           cursor: pointer;
@@ -133,9 +129,7 @@ header {
           }
         }
 
-        .btn-profile {
-          @include m.btn-profile();
-        }
+     
 
       }
     }
@@ -163,17 +157,22 @@ header {
         display: block;
         width: 28px;
         height: 3px;
-        background-color: #fff;
+        background-color: var(--primaryTextColor);
         border-radius: 3px;
         transition: all 0.5s;
       }
     }
   }
 }
+.btn-profile {
+  margin-left: 10px;
+  @include m.btn-profile();
+}
 .kZqnfX{
   background-color: var(--secondaryColor);
   border-radius: 6px;
   padding: 1em;
+  left: 0 !important;
   top: 60px !important;
 }
 .profile-menu{
@@ -197,7 +196,7 @@ header {
   }
   .profile-menu__name {
     font-size: 1.2em;
-    color: #fff;
+    color: var(--primaryTextColor);
     text-align: center;
     margin-bottom: 0;
   }
@@ -226,12 +225,12 @@ header {
 }
 
 .menu-toggle input:checked~span:nth-child(2) {
-  background-color: #fff;
+  background-color: var(--primaryTextColor);
   transform: rotate(45deg) translate(-1px, -1px);
 }
 
 .menu-toggle input:checked~span:nth-child(4) {
-  background-color: #fff;
+  background-color: var(--primaryTextColor);
   transform: rotate(-45deg) translate(-1px, 0);
 }
 
@@ -245,7 +244,7 @@ header {
 // search styles
 .notes-search {
   margin: 2em auto;
-  border: 2px solid var(--tersierColor);
+  border: 2px solid var(--borderColor);
   border-radius: 5px;
   padding: 7px 5px 7px 7px;
   width: 80%;
@@ -253,7 +252,7 @@ header {
   align-items: center;
   justify-content: space-between;
   background-color: var(--tersierColor);
-
+  box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.3);
   input {
     border: none;
     padding: 8px;
@@ -316,7 +315,7 @@ header {
       background-color: var(--secondaryColor);
       flex-direction: column;
       padding: 1em;
-      box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.3);
       border-radius: 8px;
       border: 0;
 
@@ -351,7 +350,7 @@ header {
           text-decoration: none;
 
           &:hover {
-            color: var(--secondaryTextColor);
+            color: var(--interactiveText);
             text-decoration: underline;
           }
         }
@@ -418,17 +417,10 @@ header {
     }
 
     button {
-      display: block;
+      display: block !important;
       width: 100%;
-      font-weight: 700;
-      background-color: transparent;
-      outline-color: initial;
-      border: 1px solid #00cc8f;
-      outline: none;
-      padding: 0.6em;
-      color: var(--primaryTextColor);
-      border-radius: 3px;
-      cursor: pointer;
+      text-align: center;
+      @include m.btn-archived();
     }
   }
 
@@ -468,6 +460,7 @@ header {
 // register page styles
 .container {
   .register-page {
+
     position: relative;
     width: 50%;
     border-radius: 8px;
@@ -477,14 +470,14 @@ header {
     align-items: center;
     padding: 40px;
     margin: 0 auto;
-
+    box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.3);
     .register-page__heading {
       margin: 0 auto;
       width: 200px;
       font-size: 60px;
       font-weight: bold;
       text-align: center;
-      color: lightgray;
+      color: var(--primaryTextColor);
       -webkit-transition: 0.2s ease all;
       -moz-transition: 0.2s ease all;
       -ms-transition: 0.2s ease all;
@@ -532,11 +525,11 @@ header {
 
     a {
       margin-top: 1.2rem;
-      color: #fff;
+      color: var(--primaryTextColor);
       display: block;
 
       &:hover {
-        color: blue;
+        color:var(--interactiveText);
       }
     }
   }
@@ -605,7 +598,45 @@ header {
 
 // end of konten styles
 
-
+// footer styles
+footer{ 
+  background:var(--secondaryColor); 
+  margin-top:auto;
+  display: grid;
+  padding: .5em;
+  text-align: center;
+  p{
+    color: var(--primaryTextColor) ;
+    margin: .4em 0;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+  }
+  .footer_icons{
+ 
+    a{
+      svg{
+        color: var(--primaryTextColor);
+        font-size: 32px;
+        margin-left: .2em;
+        transition: .2s ease-in;
+        &:hover{
+          color: #00cc8f;
+        }
+      }
+    }
+  }
+  .footer_description{
+    p{
+      font-size: 1em;
+      svg{
+        font-size: .9em;
+        color: #CC3D5C;
+        align-items: center;
+      }
+    }
+  }
+}
+// end of footer
 
 // Responsive BreakPoint
 @media screen and (max-width: 768px) {
@@ -617,12 +648,19 @@ header {
 }
 
 @media screen and(max-width:568px) {
+  .kZqnfX{
+    top: 60px !important;
+  }
   .menu-toggle {
     z-index: 99;
     display: flex !important;
   }
 
   .container {
+    .register-page{
+      width: 100%;
+      padding: 1em;
+    }
     .notes-container {
       grid-template-columns: 1fr;
     }
@@ -646,7 +684,11 @@ header {
         opacity: 0;
         transition: all 1s;
       }
-
+      .brand-container{
+        .toggle-theme{
+          margin: 8px 6px 0 6px;
+        }
+      }
       .slide {
         opacity: 1;
         transform: translateY(0);

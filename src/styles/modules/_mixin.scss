@@ -3,14 +3,17 @@
   --secondaryColor: #282b38;
   --tersierColor: #3e4253;
   --primaryTextColor: #fff;
-  --secondaryTextColor: #b5bdd6;
+  --secondaryTextColor: #b0bec5;
+  --interactiveText : #0071bc;
+  --borderColor : #3e4253;
 }
 [data-theme='light']{
-  --primaryColor: #fff;
-  --secondaryColor: #b5bdd6;
-  --tersierColor: #3e4253;
+  --primaryColor: #DDE4E7;
+  --secondaryColor: #ECEFF1;
+  --tersierColor: #DDE4E7;
   --primaryTextColor: #1a1b24;
   --secondaryTextColor: #282b38;
+  --borderColor : #8791A6;
   }
 
 @mixin btn-delete {
@@ -82,7 +85,7 @@
   padding: 0.5em;
   border: 0;
   outline-color: initial;
-  border-radius: 3px;
+  border-radius: 6px;
   background-color: #00cc8f;
   color: var(--primaryTextColor);
   font-weight: 500;
