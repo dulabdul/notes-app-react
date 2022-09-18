@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../utils/Button';
 import InputText from '../utils/Forms';
 import useInput from '../hooks/useInput';
-
+import LocaleContext from '../contexts/LocaleContext';
 export default function RegisterInput(props) {
+  const { localeLang } = useContext(LocaleContext);
   const [name, onNameChange] = useInput('');
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
@@ -29,10 +30,17 @@ export default function RegisterInput(props) {
       switch (name) {
         case 'password':
           if (!value) {
-            stateObj[name] = 'Please enter Password.';
+            stateObj[name] = `${
+              localeLang === 'id'
+                ? 'Masukin Password Kamu'
+                : 'Please enter Password.'
+            }`;
           } else if (confirmPassword && value !== confirmPassword) {
-            stateObj['confirmPassword'] =
-              'Password and Confirm Password does not match.';
+            stateObj['confirmPassword'] = `${
+              localeLang === 'id'
+                ? 'Password dan konfirmasi password ga cocok nih'
+                : 'Password and Confirm Password does not match.'
+            }`;
           } else {
             stateObj['confirmPassword'] = confirmPassword
               ? ''
@@ -42,9 +50,17 @@ export default function RegisterInput(props) {
 
         case 'confirmPassword':
           if (!value) {
-            stateObj[name] = 'Please enter Confirm Password.';
+            stateObj[name] = `${
+              localeLang === 'id'
+                ? 'Masukin Password Kamu'
+                : 'Please enter Password.'
+            }`;
           } else if (password && value !== password) {
-            stateObj[name] = 'Password and Confirm Password does not match.';
+            stateObj[name] = `${
+              localeLang === 'id'
+                ? 'Password dan konfirmasi password ga cocok nih'
+                : 'Password and Confirm Password does not match.'
+            }`;
           }
           break;
 
@@ -101,7 +117,7 @@ export default function RegisterInput(props) {
         <span className='err'>{error.confirmPassword}</span>
       )}
       <Button type='button' disabled={!error.confirmPassword} isRegister>
-        Register
+        {localeLang === 'id' ? 'Daftar' : 'Register'}
       </Button>
     </form>
   );

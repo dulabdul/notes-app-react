@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import InputText from '../utils/Forms';
 import Button from '../utils/Button';
 import useInput from '../hooks/useInput';
+import LocaleContext from '../contexts/LocaleContext';
 
 export default function LoginInput(props) {
+  const { localeLang } = useContext(LocaleContext);
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
   const onSubmitHandler = (e) => {
@@ -31,7 +33,7 @@ export default function LoginInput(props) {
         name='password'
       />
       <Button type='button' isRegister>
-        Login
+        {localeLang === 'id' ? 'Masuk' : 'Login'}
       </Button>
     </form>
   );
